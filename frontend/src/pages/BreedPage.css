@@ -1,0 +1,46 @@
+.page-container {
+    padding-top: 1rem;
+    min-height: 100vh;
+    background-color: #f8fafc;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #15803d;
+}
+
+.menu-btn.dark {
+    color: #374151;
+}
+
+.page-content {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.breeds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.about-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
