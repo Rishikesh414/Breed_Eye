@@ -12,6 +12,8 @@ const Home = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [previewUrl, setPreviewUrl] = useState(null);
+    const [predictionResult, setPredictionResult] = useState(null);
+    const [isPredicting, setIsPredicting] = useState(false);
     const [isCameraOpen, setIsCameraOpen] = useState(false);
 
     const fileInputRef = useRef(null);
@@ -40,7 +42,21 @@ const Home = () => {
             setSelectedImage(file);
             const url = URL.createObjectURL(file);
             setPreviewUrl(url);
+            setPredictionResult(null);
         }
+    };
+
+    const handlePredict = () => {
+        setIsPredicting(true);
+        // Simulate API call
+        setTimeout(() => {
+            setPredictionResult({
+                breed: "Jersey",
+                confidence: 98.5,
+                description: "Jersey cattle are a small breed of dairy cattle. Originally bred in the Channel Island of Jersey, the breed is popular for the high butterfat content of its milk.",
+            });
+            setIsPredicting(false);
+        }, 2000);
     };
 
     const triggerFileUpload = () => {
@@ -163,14 +179,9 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="results-placeholder">
-                    {selectedImage ? (
-                        <div className="image-preview">
-                            <img src={previewUrl} alt="Preview" style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '8px' }} />
-                            <p style={{ marginTop: '1rem' }}>Image selected: {selectedImage.name || 'Captured Image'}</p>
-                        </div>
-                    ) : (
-                        <>
+                <div className="results-section">
+                    {!selectedImage ? (
+                        <div className="results-placeholder">
                             <div className="placeholder-icon-wrapper">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
@@ -187,7 +198,95 @@ const Home = () => {
                             </div>
                             <h3>{t('no_results')}</h3>
                             <p>{t('no_results_desc')}</p>
-                        </>
+                        </div>
+                    ) : (
+                        <div className="prediction-layout">
+                            <div className="prediction-left">
+                                <div className="image-preview-container">
+                                    <img src={previewUrl} alt="Preview" />
+                                    <div className="image-label">{selectedImage.name || 'Captured Image'}</div>
+                                </div>
+
+                                {!predictionResult && (
+                                    <button
+                                        className="predict-btn"
+                                        onClick={handlePredict}
+                                        disabled={isPredicting}
+                                    >
+                                        {isPredicting ? (
+                                            <>
+                                                <span className="spinner"></span>
+                                                {t('predicting')}
+                                            </>
+                                        ) : (
+                                            <>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                                                </svg>
+                                                {t('predict_btn')}
+                                            </>
+                                        )}
+                                    </button>
+                                )}
+
+                                {predictionResult && (
+                                    <div className="grad-cam-container fade-in">
+                                        <div className="section-header">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                                                <circle cx="12" cy="12" r="3"></circle>
+                                            </svg>
+                                            <h3>{t('grad_cam_title')}</h3>
+                                        </div>
+                                        <div className="grad-cam-grid">
+                                            <div className="grad-cam-item">
+                                                <img src={previewUrl} alt="Grad CAM 1" style={{ filter: 'hue-rotate(45deg) contrast(1.2)' }} />
+                                                <span>Heatmap</span>
+                                            </div>
+                                            <div className="grad-cam-item">
+                                                <img src={previewUrl} alt="Grad CAM 2" style={{ filter: 'invert(1) opacity(0.8)' }} />
+                                                <span>Activation</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {predictionResult && (
+                                <div className="prediction-right fade-in">
+                                    <div className="breed-details-card">
+                                        <div className="card-header">
+                                            <div className="pulse-dot"></div>
+                                            <h2>{t('prediction_result')}</h2>
+                                        </div>
+
+                                        <div className="breed-info-main">
+                                            <div className="info-row">
+                                                <span className="label">{t('breed_label')}</span>
+                                                <span className="value highlight">{predictionResult.breed}</span>
+                                            </div>
+                                            <div className="info-row">
+                                                <span className="label">{t('confidence_label')}</span>
+                                                <div className="confidence-wrapper">
+                                                    <div className="confidence-bar">
+                                                        <div
+                                                            className="confidence-fill"
+                                                            style={{ width: `${predictionResult.confidence}%` }}
+                                                        ></div>
+                                                    </div>
+                                                    <span className="confidence-text">{predictionResult.confidence}%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="breed-description">
+                                            <p>{predictionResult.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
                     )}
                 </div>
 

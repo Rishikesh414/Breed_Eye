@@ -36,5 +36,11 @@
     "confidence_medium": "मध्यम",
     "confidence_low": "कम",
     "heatmap_caption": "पूर्वानुमान के लिए उपयोग किए गए हाइलाइट किए गए क्षेत्र",
-    "heatmap_toggle": "हीटमैप टॉगल करें"
+    "heatmap_toggle": "हीटमैप टॉगल करें",
+    "predict_btn": "नस्ल पहचानें",
+    "predicting": "विश्लेषण कर रहा है...",
+    "grad_cam_title": "एआई विज़न विश्लेषण (Grad-CAM)",
+    "prediction_result": "पहचान परिणाम",
+    "breed_label": "पहचानी गई नस्ल",
+    "confidence_label": "विश्वास स्कोर"
 }

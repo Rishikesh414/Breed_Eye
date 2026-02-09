@@ -36,5 +36,11 @@
     "confidence_medium": "Medium",
     "confidence_low": "Low",
     "heatmap_caption": "Highlighted areas used for prediction",
-    "heatmap_toggle": "Toggle Heatmap"
+    "heatmap_toggle": "Toggle Heatmap",
+    "predict_btn": "Predict Breed",
+    "predicting": "Analyzing image...",
+    "grad_cam_title": "AI Vision Analysis (Grad-CAM)",
+    "prediction_result": "Identification Result",
+    "breed_label": "Identified Breed",
+    "confidence_label": "Confidence Score"
 }

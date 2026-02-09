@@ -36,5 +36,11 @@
     "confidence_medium": "நடுத்தரம்",
     "confidence_low": "குறைவு",
     "heatmap_caption": "கணிப்புக்கு பயன்படுத்தப்பட்ட பகுதிகள்",
-    "heatmap_toggle": "வெப்ப வரைபடத்தை நிலைமாற்று"
+    "heatmap_toggle": "வெப்ப வரைபடத்தை நிலைமாற்று",
+    "predict_btn": "இனத்தை கணிக்கவும்",
+    "predicting": "பகுப்பாய்வு செய்கிறது...",
+    "grad_cam_title": "ஏஐ பார்வை பகுப்பாய்வு (Grad-CAM)",
+    "prediction_result": "கணிப்பு முடிவு",
+    "breed_label": "கண்டறியப்பட்ட இனம்",
+    "confidence_label": "நம்பகத்தன்மை மதிப்பீடு"
 }
