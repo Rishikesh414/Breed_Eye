@@ -1,0 +1,33 @@
+{
+  "name": "AI Cattle & Buffalo Breed Identification",
+  "short_name": "BreedAI",
+  "description": "Offline-first AI-based cattle and buffalo breed identification system with multilingual support for BPA registration",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#1b5e20",
+  "lang": "en",
+  "categories": ["productivity", "education", "government"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
