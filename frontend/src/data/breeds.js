@@ -1,3 +1,12 @@
+/*
+ * HOW TO ADD IMAGES:
+ * 1. Add your image files to the 'src/assets' folder.
+ * 2. Import the image at the top of this file:
+ *    import girImage from '../assets/gir.jpg';
+ * 3. In the list below, add the 'image' property to the breed object:
+ *    { id: 1, name: 'Gir', image: girImage },
+ */
+
 export const cattleBreeds = [
     { id: 1, name: 'Gir' },
     { id: 2, name: 'Sahiwal' },
@@ -51,8 +60,8 @@ export const cattleBreeds = [
     { id: 50, name: 'Kathani' }
 ].map(breed => ({
     ...breed,
-    // Using a placeholder service with breed text to simulate unique images
-    image: `https://placehold.co/400x300/e2e8f0/1e293b?text=${encodeURIComponent(breed.name)}`
+    // Use provided image or fallback to placeholder
+    image: breed.image ? breed.image : `https://placehold.co/400x300/e2e8f0/1e293b?text=${encodeURIComponent(breed.name)}`
 }));
 
 export const buffaloBreeds = [
@@ -75,5 +84,5 @@ export const buffaloBreeds = [
     { id: 17, name: 'Jerangi' }
 ].map(breed => ({
     ...breed,
-    image: `https://placehold.co/400x300/e2e8f0/1e293b?text=${encodeURIComponent(breed.name)}`
+    image: breed.image ? breed.image : `https://placehold.co/400x300/e2e8f0/1e293b?text=${encodeURIComponent(breed.name)}`
 }));
